@@ -1,0 +1,14 @@
+
+*.meta
+PrettyObjectScripts/*
+TextMeshPro/*
+TwitchChatConnect/*
+Assets/*.meta
+MoshuEngine/*.meta
+Assets/Data/*
+Assets/Fonts/*
+Assets/Scenes/*
+Assets/Scripts/*.meta
+Assets/Scripts/_Icons/*
+Assets/Scripts/GameControllers/*.meta
+Assets/Scripts/Twitch/*.meta
