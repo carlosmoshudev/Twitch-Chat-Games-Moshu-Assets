@@ -4,6 +4,7 @@ using TwitchChatConnect.Data;
 
 public class TwitchChatEventManager : MonoBehaviour 
 {
+    public AhorcadoGM refAhorcado;
     [SerializeField] private GlobalVariables _globalVariables;
     public void InitializeChatConnection()
     {
@@ -25,13 +26,27 @@ public class TwitchChatEventManager : MonoBehaviour
     }
     private void OnChatMessageReceived(TwitchChatMessage chatMessage)
     {
-        Console.ChatLog(chatMessage: chatMessage);
-        AddUser(user: chatMessage.User);
+        //Console.ChatLog(chatMessage: chatMessage);
+        //AddUser(user: chatMessage.User);
     }
     private void OnChatCommandReceived(TwitchChatCommand chatCommand)
     {
+        var cmd = chatCommand.Command;
+        var args = chatCommand.Message.Split(' ');
         Console.CommandLog(chatCommand: chatCommand);
-        AddUser(user: chatCommand.User);
+        if (cmd == "!play" && _globalVariables.gameSelected == GameSelected.Ahorcado) 
+        {
+            AddUser(user: chatCommand.User);
+        }
+        if (cmd == "!letra" && _globalVariables.gameSelected == GameSelected.Ahorcado)
+        {
+            char letter = (args[1]).ToCharArray()[0];
+            refAhorcado.TryLetter(letter: letter);
+        }
+        if (cmd == "!palabra" && _globalVariables.gameSelected == GameSelected.Ahorcado) 
+        {
+            refAhorcado.TryPalabra(triedWord: args[1]);
+        }
     }
     private void AddUser(TwitchUser user)
     {
@@ -48,5 +63,9 @@ public class TwitchChatEventManager : MonoBehaviour
             if(addedUser.DisplayName==user.DisplayName) return true;
         }
         return false;
+    }
+    public void SendChat(string message)
+    {
+        TwitchChatClient.instance.SendChatMessage(message: message);
     }
 }

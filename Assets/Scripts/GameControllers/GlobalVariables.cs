@@ -11,6 +11,7 @@ public class GlobalVariables : MonoBehaviour {
     [SerializeField] private TwitchConnectData _defaultBotDataSO;
     [SerializeField] private TwitchConnectData _generatedBotDataSO;
     [SerializeField] private bool _isConnected = false;
+    public GameSelected gameSelected = GameSelected.None;
     [Header(header:"Twitch")]
     public System.Collections.Generic.List<TwitchUser> chatUsers 
         = new System.Collections.Generic.List<TwitchUser>();
@@ -29,4 +30,8 @@ public class GlobalVariables : MonoBehaviour {
         //borrar
         _totalChatUsers=chatUsers.Count;
     }
+}
+public enum GameSelected {
+    None,
+    Ahorcado
 }
