@@ -5,7 +5,6 @@ using TwitchChatConnect.Client;
 
 namespace TwitchMiniGames.GameControllers
 {
-    [System.Serializable]
     public class MainMenuEvents : MonoBehaviour
     {
         [Header(header:"Global")]

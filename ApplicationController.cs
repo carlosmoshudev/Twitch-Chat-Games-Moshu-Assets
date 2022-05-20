@@ -7,6 +7,6 @@ public class ApplicationController : MonoBehaviour
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
         //window and resolution
-        Screen.SetResolution(1280, 720, false);
+        Screen.SetResolution(720, 480, false);
     }
 }
